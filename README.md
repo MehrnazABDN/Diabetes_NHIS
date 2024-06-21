@@ -33,10 +33,13 @@ This refined the dataset to 25,621 rows and 22 columns.
 The exploratory data analysis (EDA) phase utilized graphical techniques to gain insights into the NHIS dataset:
 
 - What is the prevalence of diabetes in the dataset?
-Visualized the prevalence, showing 25.34% had diabetes, and 74.66% did not.
+Visualized the prevalence, showing 21.4% had diabetes, and 78.6% did not.
+![PercentageDiabetes](https://github.com/MehrnazABDN/Diabetes_NHIS/assets/132322441/804e20dd-ad1e-4990-bbcb-1b3f04c0a007)
 
 - What is the gender distribution among participants with and without diabetes?
-Showed 54.60% female and 45.50% male. Further analysis revealed differences in diabetes prevalence between genders.
+Showed 54.60% female and 45.40% male. Further analysis revealed differences in diabetes prevalence between genders.
+  
+![diabetes distribution](https://github.com/MehrnazABDN/Diabetes_NHIS/assets/132322441/7bf4cdad-485c-406d-94bd-89473155f80b)
 
 - How does age distribution vary between individuals with and without diabetes?
 Indicated a left-skewed distribution for diabetics and kurtosis for non-diabetics, spanning 18 to 99 years. The Mann-Whitney test showed a strong relationship between diabetes and age, focusing on individuals aged 40+, resulting in a filtered dataset of 18,307 rows.
@@ -139,6 +142,8 @@ for variable in variables_of_interest:
     print(f"Chi-square statistic: {chi2}")
     print(f"P-value: {p_value}\n")
 ```
+![spearman heatmap](https://github.com/MehrnazABDN/Diabetes_NHIS/assets/132322441/8c733862-e3c6-478b-a20e-352e32e5a32e)
+
 - Logistic Regression: Predicted diabetes occurrence using 'Diabetes_ever_or_borderline' based on predictor variables.
 ```python
 # Define the features (X) and the target variable (y)
@@ -158,6 +163,29 @@ result = logit_model.fit()
 
 print(result.summary())
 ```
+```python
+X = df[['General_Health', 'Hypertension_Once', 'Cholesterol', 'Physical_Activity_Time_Period', 'Sleep_Rested', 'Soda_Period', 'Sweetened_Fruit_Drinks_Period', 'Pizza_Period']]
+y = df['Diabetes_ever_or_borderline']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+
+scaler = StandardScaler()
+X_train_scaled = scaler.fit_transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+
+
+log_reg_model = LogisticRegression()
+
+log_reg_model.fit(X_train_scaled, y_train)
+
+
+train_accuracy = log_reg_model.score(X_train_scaled, y_train)
+test_accuracy = log_reg_model.score(X_test_scaled, y_test)
+
+print("Training Accuracy:", train_accuracy)
+print("Testing Accuracy:", test_accuracy)
+```
 
 ### Results
 - Prevalence of Diabetes: 25.34% of individuals in the NHIS dataset had diabetes.
@@ -175,6 +203,7 @@ print(result.summary())
 - Kendall’s Tau: Strong correlations were observed for "Hypertension_Once" (τ = 0.239, p < 0.001), "General_Health" (τ = -0.215, p < 0.001), and "Cholesterol" (τ = 0.230, p < 0.001) with diabetes status.
 
 - Logistic Regression: Significant predictors included "Hypertension_Once", "Cholesterol", "Depression", and certain dietary habits (p < 0.05). The model exhibited good performance with training accuracy of 0.781 and testing accuracy of 0.792.
+
 
 ### Key Findings and Recommendations
 

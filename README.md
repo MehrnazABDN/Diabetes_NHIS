@@ -11,15 +11,19 @@
 -  [Key Findings and Recommendations](#key-findings-and-recommendations)
 
 ### Project Overview
+---
 Diabetes affects 422 million people globally and causes 1.5 million deaths annually. Key factors include obesity, inactivity, high blood pressure, and abnormal cholesterol. Projected to become the seventh leading cause of death by 2030, diabetes cost the USA $412.9 billion in 2022. This study uses the 2022 NHIS data to identify patterns in diabetes risk factors, aiming to inform strategies for reducing new cases and improving public health.
 
 ### Data Source
+---
 This study uses data from the 2022 National Health Interview Survey (NHIS) Adult dataset, conducted annually by the CDC. The dataset includes 27,651 participants and 637 variables, covering demographics, health status, chronic conditions, disability, health insurance, behaviors, lifestyle factors, healthcare utilization, mental health, and access to healthcare.
 
 ### Tools
+---
 - Python [Download Here](Link)
 
 ### Data Cleaning and Preparation
+---
 Key steps included:
 
 1. Renaming columns for clarity.
@@ -30,6 +34,7 @@ Key steps included:
 This refined the dataset to 25,621 rows and 22 columns.
 
 ### Exploratory Data Analysis
+---
 The exploratory data analysis (EDA) phase utilized graphical techniques to gain insights into the NHIS dataset:
 
 - What is the prevalence of diabetes in the dataset?
@@ -48,6 +53,7 @@ Indicated a left-skewed distribution for diabetics and kurtosis for non-diabetic
 Under-sampling yielded a balanced dataset with 3924 rows for each group.
 
 ### Data Analysis
+---
 - Bar Graphs: Visualized relationships between predictor variables and diabetes occurrence.
 ``` python
 variables = ['Vegetable_Period', 'Soda_Period', 'Coffee_Tea_Sugar_Period',
@@ -188,6 +194,7 @@ print("Testing Accuracy:", test_accuracy)
 ```
 
 ### Results
+---
 - Prevalence of Diabetes: 25.34% of individuals in the NHIS dataset had diabetes.
 
 - Gender Distribution: The dataset consisted of 54.60% females and 45.50% males.
@@ -206,7 +213,7 @@ print("Testing Accuracy:", test_accuracy)
 
 
 ### Key Findings and Recommendations
-
+---
 - Findings: This study identifies hypertension, cholesterol levels, depression, and dietary habits as significant predictors of Type 2 Diabetes (T2D) risk among adults, highlighting the crucial role of maintaining a healthy lifestyle with adequate sleep and physical activity to mitigate these risks.
 
 - Limitations: Limitations include reliance on self-reported data and the NHIS dataset's cross-sectional nature, which restricts longitudinal analysis of diet and diabetes onset trends.
